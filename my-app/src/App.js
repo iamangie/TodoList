@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import TextField from '@material-ui/core/TextField';
 
 const User = ({ id, name, deleteUser, editUser }) => {
  const [userName, setUserName] = useState(name);
@@ -54,11 +55,15 @@ function App() {
 
   return (
     <div className="App">
-      <input 
+    <TextField 
+      id="outlined-basic" 
+      label="Outlined" 
+      variant="outlined" 
       onKeyDown={(e) => {addUser(e)}} 
       onChange={(e) => {setValue(e.target.value)}} 
       value={value}
       />
+
     {
       users.map(u => {
         return (
