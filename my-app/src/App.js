@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const User = ({ id, name, deleteUser, editUser }) => {
  const [userName, setUserName] = useState(name);
@@ -16,7 +18,14 @@ const User = ({ id, name, deleteUser, editUser }) => {
     <div>
         <input onKeyDown={(e) => editUserName(e)} value={userName} onChange={(e) =>  setUserName(e.target.value) } />
           <div>{id}</div>
-          <div onClick={() => { deleteUser(id) }}>delete</div>
+          <Button
+        variant="contained"
+        color="primary"
+        startIcon={<DeleteIcon />}
+        onClick={() => { deleteUser(id) }}
+      >
+        Delete
+      </Button>
     </div>
   );
 };
@@ -57,7 +66,7 @@ function App() {
     <div className="App">
     <TextField 
       id="outlined-basic" 
-      label="Outlined" 
+      label="Value" 
       variant="outlined" 
       onKeyDown={(e) => {addUser(e)}} 
       onChange={(e) => {setValue(e.target.value)}} 
