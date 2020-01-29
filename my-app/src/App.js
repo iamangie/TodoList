@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
+
 import Container from '@material-ui/core/Container';
+import Button from './Button';
 
 const User = ({ id, name, deleteUser, editUser }) => {
 
@@ -19,13 +19,10 @@ const User = ({ id, name, deleteUser, editUser }) => {
   }
   
    return (
-    <div>
-      <div>{id}</div>
+    <div className="User">
+      <div className="User__id">{id}</div>
       <TextField id="standard-basic" onKeyDown={(e) => editUserName(e)} value={userName} onChange={(e) =>  setUserName(e.target.value) } />
       <Button
-        variant="contained"
-        color="primary"
-        startIcon={<DeleteIcon />}
         onClick={() => { deleteUser(id) }}
       >
       Delete

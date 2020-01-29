@@ -38,4 +38,11 @@
   }
 }
 
+.User {
+  margin: 20px 0;
+}
 
+.User__id {
+  font-size: 18px;
+  color: #3475FF;
+}
