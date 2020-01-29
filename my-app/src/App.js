@@ -4,9 +4,12 @@ import './App.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Container from '@material-ui/core/Container';
 
 const User = ({ id, name, deleteUser, editUser }) => {
+
  const [userName, setUserName] = useState(name);
+
   const editUserName = ({keyCode}) => {
     console.log('keypress', keyCode)
     if(keyCode === 13) {
@@ -14,17 +17,18 @@ const User = ({ id, name, deleteUser, editUser }) => {
       editUser(id, userName);
     }
   }
+  
    return (
     <div>
-        <input onKeyDown={(e) => editUserName(e)} value={userName} onChange={(e) =>  setUserName(e.target.value) } />
-          <div>{id}</div>
-          <Button
+      <div>{id}</div>
+      <TextField id="standard-basic" onKeyDown={(e) => editUserName(e)} value={userName} onChange={(e) =>  setUserName(e.target.value) } />
+      <Button
         variant="contained"
         color="primary"
         startIcon={<DeleteIcon />}
         onClick={() => { deleteUser(id) }}
       >
-        Delete
+      Delete
       </Button>
     </div>
   );
@@ -33,14 +37,12 @@ const User = ({ id, name, deleteUser, editUser }) => {
 
 function App() {
 
-  
-  
   const [users, setUsers] = useState([
-    {name: 'Valera', id: 1,},
-    {name: 'Kolya', id: 2},
+    {name: 'Jerry', id: 1,},
+    {name: 'Tom', id: 2},
   ]);
 
-  const [value, setValue] = useState('hui');
+  const [value, setValue] = useState('Micky');
 
   const addUser = ({keyCode}) => {
     if(keyCode === 13) {
@@ -61,26 +63,27 @@ function App() {
     setUsers([...filteredUsers, ...editedUser]);
   }
 
-
   return (
+    <Container maxWidth="sm">
     <div className="App">
-    <TextField 
-      id="outlined-basic" 
-      label="Value" 
-      variant="outlined" 
-      onKeyDown={(e) => {addUser(e)}} 
-      onChange={(e) => {setValue(e.target.value)}} 
-      value={value}
+      <TextField 
+        id="outlined-basic" 
+        label="Value" 
+        variant="outlined" 
+        onKeyDown={(e) => {addUser(e)}} 
+        onChange={(e) => {setValue(e.target.value)}} 
+        value={value}
       />
 
-    {
-      users.map(u => {
-        return (
-          <User key={u.id} id={u.id} name={u.name} deleteUser={deleteUser} editUser={editUser}/>
-        )
-      })
-    }
+      {
+        users.map(u => {
+          return (
+            <User key={u.id} id={u.id} name={u.name} deleteUser={deleteUser} editUser={editUser}/>
+          )
+        })
+      }
     </div>
+    </Container>
   );
 }
 
