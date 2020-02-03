@@ -17,11 +17,11 @@ const User = ({ id, name, deleteUser, editUser }) => {
       editUser(id, userName);
     }
   }
-  
+
    return (
     <div className="User">
       <div className="User__id">{id}</div>
-      <TextField id="standard-basic" onKeyDown={(e) => editUserName(e)} value={userName} onChange={(e) =>  setUserName(e.target.value) } />
+      <TextField onKeyDown={(e) => editUserName(e)} value={userName} onChange={(e) =>  setUserName(e.target.value) } />
       <Button
         onClick={() => { deleteUser(id) }}
       >
@@ -35,19 +35,23 @@ const User = ({ id, name, deleteUser, editUser }) => {
 function App() {
 
   const [users, setUsers] = useState([
-    {name: 'Jerry', id: 1,},
-    {name: 'Tom', id: 2},
+    {name: 'Jerry' },
+    {name: 'Tom' },
   ]);
+
+  users.forEach((user, index) => {
+    user.id = index + 1;
+  });
 
   const [value, setValue] = useState('Micky');
 
   const addUser = ({keyCode}) => {
     if(keyCode === 13) {
       setValue('');
-      setUsers([...users, {name: value, id: users.length + 1}]);
+      setUsers([...users, {name: value}]);
     }
   }
-
+ 
   const deleteUser = (id) => {
     const filteredUsers = users.filter(u => u.id !== id);
     setUsers(filteredUsers);
@@ -73,7 +77,7 @@ function App() {
       />
 
       {
-        users.map(u => {
+        users.map((u) => {
           return (
             <User key={u.id} id={u.id} name={u.name} deleteUser={deleteUser} editUser={editUser}/>
           )
