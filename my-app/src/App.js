@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import TextField from '@material-ui/core/TextField';
 
@@ -53,13 +52,18 @@ function App() {
   }
  
   const deleteUser = (id) => {
-    const filteredUsers = users.filter(u => u.id !== id);
+    const deletedUser = users.filter(u => u.id === id);
+    console.log(deletedUser)
+   
+    const filteredUsers = users.filter(u =>  u.id !== id );
+    console.log(filteredUsers)
+
     setUsers(filteredUsers);
   }
 
   const editUser = (id, name) => {
     const filteredUsers = users.filter(u => u.id !== id);
-    const editedUser = users.filter(u => u.id == id);
+    const editedUser = users.filter(u => u.id === id);
     editedUser[0].name = name;
     setUsers([...filteredUsers, ...editedUser]);
   }
