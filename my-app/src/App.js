@@ -36,7 +36,7 @@ function App() {
   return (
     <Container maxWidth="lg">
       <div className="App">
-        <React.Fragment>
+        <div>
           <TextField 
             label="Enter value" 
             variant="outlined" 
@@ -45,7 +45,7 @@ function App() {
             value={value}
           />
           <UsersList users={users} deleteUser={deleteUser} editUser={editUser} />
-        </React.Fragment>
+        </div>
         <UsersFilter users={users} />
       </div>
     </Container>
