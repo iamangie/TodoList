@@ -17,7 +17,7 @@ function UsersFilter({ users }) {
   
   useEffect(() => {
     const userNames = users.map(user => user.name);
-    const results = userNames.filter(person => person.toLowerCase().includes(searchName.toLowerCase()));
+    const results = userNames.filter(name => name.toLowerCase().includes(searchName.toLowerCase()));
     setSearchUsers(results);
   }, [searchName, users]);
   
@@ -28,7 +28,7 @@ function UsersFilter({ users }) {
       if (x === y) {
         return 0;
       }
-      return x > y ? 1: -1;
+      return x > y ? 1 : -1;
     });
     setSearchUsers(sortedUsers);
     console.log(sortedUsers)
