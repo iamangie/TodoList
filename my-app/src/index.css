@@ -14,9 +14,6 @@ code {
 
 .App {
   margin: 30px 0;
-  display: flex;
-  justify-content: space-around;
-  
 }
 
 .User {
@@ -26,7 +23,7 @@ code {
 .User__id {
   font-size: 18px;
   color: #3475FF;
-  text-align: center;
+
 }
 
 .Users-filter {

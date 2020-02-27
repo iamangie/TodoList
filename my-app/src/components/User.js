@@ -7,20 +7,17 @@ import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 
 
-
-
-
 function User({ id, name, deleteUser, editUser, index }) {
 
   const [userName, setUserName] = useState(name);
    
-   const editUserName = ({keyCode}) => {
-     console.log('keypress', keyCode)
-     if(keyCode === 13) {
-       console.log('edit user name !')
-       editUser(id, userName);
-     }
-   }
+  const editUserName = ({keyCode}) => {
+    console.log('keypress', keyCode)
+    if(keyCode === 13) {
+      console.log('edit user name !')
+      editUser(id, userName);
+    }
+  }
    
   return (
     <div className="User">
