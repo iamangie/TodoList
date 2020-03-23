@@ -64,6 +64,7 @@ function UsersList() {
         onChange={(e) => {setValue(e.target.value)}} 
         value={value}
       />
+      <ul>
       {
         users.map((user, index) => {
           return (
@@ -71,6 +72,7 @@ function UsersList() {
           )
         })
       }
+      </ul>
       <Button onClick={sortByName}>Sort</Button>
       <Button onClick={saveUsers}>Save</Button>
     </div>

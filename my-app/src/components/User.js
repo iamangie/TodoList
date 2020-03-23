@@ -20,18 +20,18 @@ function User({ id, name, deleteUser, editUser, index }) {
   }
    
   return (
-    <div className="User">
-      <div className="User__id">{index + 1}</div>
+    <li className="User">
       <FormControlLabel
         control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checked" color='primary' />}
       />
+      <span className="User__id">{index + 1}.</span>
       <TextField onKeyDown={(e) => editUserName(e)} value={userName} onChange={(e) =>  setUserName(e.target.value) } />
       <Button
         onClick={() => { deleteUser(id) }}
       >
       Delete
       </Button>
-    </div>
+    </li>
   )
 }
 
