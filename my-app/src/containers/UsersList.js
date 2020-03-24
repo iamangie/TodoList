@@ -11,6 +11,8 @@ function UsersList() {
 
   const [value, setValue] = useState("Micky");
 
+  const [isSortByDescending, setSortType] = useState(true);
+
   const addUser = ({ keyCode }) => {
     if (keyCode === 13) {
       setValue("");
@@ -40,15 +42,22 @@ function UsersList() {
   }, []);
 
   const sortByName = () => {
-    const sortedUsers = users.sort((a, b) => {
+    let sortedUsers = users.sort((a, b) => {
       const x = a.name.toLowerCase();
       const y = b.name.toLowerCase();
       if (x === y) {
         return 0;
       }
-      return x > y ? 1 : -1;
+      if (isSortByDescending) {
+        return x < y ? 1 : -1;
+      } else {
+        return x > y ? 1 : -1;
+      }
     });
-    setUsers(sortedUsers);
+    setSortType(!isSortByDescending);
+    setUsers([...sortedUsers]);
+    setValue("");
+    return null;
   };
 
   return (
