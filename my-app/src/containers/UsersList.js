@@ -6,7 +6,7 @@ import Button from "../components/Button";
 function UsersList() {
   const [users, setUsers] = useState([
     { name: "Jerry", id: 1 },
-    { name: "Tom", id: 2 }
+    { name: "Tom", id: 2 },
   ]);
 
   const [value, setValue] = useState("Micky");
@@ -20,14 +20,14 @@ function UsersList() {
     }
   };
 
-  const deleteUser = id => {
-    const remainedUsers = users.filter(u => u.id !== id);
+  const deleteUser = (id) => {
+    const remainedUsers = users.filter((u) => u.id !== id);
     setUsers(remainedUsers);
   };
 
   const editUser = (id, name) => {
-    const remainedUsers = users.filter(u => u.id !== id);
-    const editedUser = users.filter(u => u.id === id);
+    const remainedUsers = users.filter((u) => u.id !== id);
+    const editedUser = users.filter((u) => u.id === id);
     editedUser[0].name = name;
     setUsers([...remainedUsers, ...editedUser]);
   };
@@ -62,13 +62,14 @@ function UsersList() {
 
   return (
     <div className="Users-list">
+      <h1>Guest List for Birthday Party</h1>
       <TextField
         label="Enter value"
         variant="outlined"
-        onKeyDown={e => {
+        onKeyDown={(e) => {
           addUser(e);
         }}
-        onChange={e => {
+        onChange={(e) => {
           setValue(e.target.value);
         }}
         value={value}
