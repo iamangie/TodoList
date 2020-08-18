@@ -18,6 +18,7 @@ A few of the things you can do with TodoList:
 * Add a new to-do item just by pressing 'Enter'
 * Manage your to-do list with Localstorage
 * Sort items by alphabet in ascending and descending order
+* Edit an existing to-do item
 * Save your changes with a 'Save' button
 * Press 'Delete' and then 'Save' buttons to delete item and save changes
 
